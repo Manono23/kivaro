@@ -21,14 +21,15 @@
     /* Navigation */
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 32px; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
+      padding: 20px 32px; background: rgba(255,255,255,0.98); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000;
     }
     .logo-container { display: flex; align-items: center; gap: 12px; }
     .logo-img { height: 42px; width: auto; object-fit: contain; }
-    .logo-text { font-size: 1.6rem; font-weight: 800; }
+    .logo-text { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
     .nav-links { display: flex; gap: 32px; font-weight: 500; }
     .nav-links a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; cursor: pointer; }
+    .nav-links a:hover { opacity: 0.6; }
     .nav-icons { display: flex; gap: 24px; font-size: 1.2rem; cursor: pointer; }
     .cart-icon { position: relative; }
     .cart-count { position: absolute; top: -8px; right: -12px; background: black; color: white; font-size: 0.7rem; font-weight: bold; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
@@ -36,98 +37,110 @@
     
     /* Hero */
     .hero {
-      position: relative; padding: 100px 32px; display: flex; align-items: center; min-height: 85vh;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://i.ibb.co/tPFgncnP/Simple-Angel-Desktop-Wallpaper-1.jpg');
+      position: relative; padding: 120px 32px; display: flex; align-items: center; min-height: 85vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://i.ibb.co/tPFgncnP/Simple-Angel-Desktop-Wallpaper-1.jpg');
       background-size: cover; background-position: center 30%;
     }
     .hero-content { position: relative; z-index: 2; color: white; max-width: 600px; }
     .hero-content h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
-    .btn-primary { background: white; color: black; padding: 16px 40px; border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: var(--transition); }
+    .hero-content .tagline { font-size: 1.2rem; margin-bottom: 32px; opacity: 0.9; }
+    .btn-primary { background: white; color: black; padding: 16px 40px; border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: var(--transition); letter-spacing: 1px; }
     .btn-primary:hover { background: #e5e5e5; transform: translateY(-2px); }
     
     /* Category Filters */
-    .category-filters { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-    .filter-btn { background: transparent; border: 1px solid var(--medium-grey); padding: 10px 24px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: var(--transition); border-radius: 30px; }
+    .category-filters { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .filter-btn { background: transparent; border: 1px solid var(--medium-grey); padding: 10px 28px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: var(--transition); border-radius: 40px; }
     .filter-btn:hover, .filter-btn.active { background: black; color: white; border-color: black; }
     
-    /* Products Grid */
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px 28px; margin: 48px 0; }
-    .product-card { transition: var(--transition); background: white; padding: 0 0 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .product-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .product-image { background-color: var(--light-grey); aspect-ratio: 1 / 1.2; background-size: cover; background-position: center; margin-bottom: 15px; }
-    .product-category-badge { display: inline-block; font-size: 0.7rem; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; padding: 0 15px; }
-    .product-title { font-weight: 600; font-size: 1rem; margin-bottom: 5px; padding: 0 15px; }
-    .product-price { font-weight: 600; color: #2e2e2e; margin-bottom: 12px; font-size: 1.1rem; padding: 0 15px; }
-    .select-group { padding: 0 15px; margin: 8px 0; }
-    .select-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.85rem; background: white; cursor: pointer; margin-bottom: 8px; }
-    .btn-add { background: black; color: white; border: none; padding: 12px 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: 0.2s; width: calc(100% - 30px); margin: 10px 15px 0 15px; border-radius: 30px; }
+    /* Products Grid with Image Hover */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; margin: 48px 0; }
+    .product-card { transition: var(--transition); background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    .product-image-container { position: relative; aspect-ratio: 1 / 1.2; overflow: hidden; background: var(--light-grey); }
+    .product-image-front, .product-image-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: opacity 0.3s ease; }
+    .product-image-front { opacity: 1; z-index: 1; }
+    .product-image-back { opacity: 0; z-index: 2; }
+    .product-card:hover .product-image-front { opacity: 0; }
+    .product-card:hover .product-image-back { opacity: 1; }
+    .product-info { padding: 18px; }
+    .product-category-badge { display: inline-block; font-size: 0.7rem; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; letter-spacing: 1px; }
+    .product-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .product-price { font-weight: 700; color: #000; margin-bottom: 12px; font-size: 1.2rem; }
+    .select-group select { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 10px; font-family: inherit; font-size: 0.85rem; background: white; margin-bottom: 10px; cursor: pointer; }
+    .btn-add { background: black; color: white; border: none; padding: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: 0.2s; width: 100%; border-radius: 30px; letter-spacing: 1px; }
     .btn-add:hover { background: #333; transform: scale(0.98); }
     
     /* Modals */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-    .cart-modal-content, .admin-dashboard { background: white; max-width: 700px; width: 95%; padding: 32px; border-radius: 12px; max-height: 90vh; overflow-y: auto; }
-    .admin-dashboard { max-width: 1200px; }
-    .close-modal { float: right; font-size: 28px; cursor: pointer; font-weight: bold; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(4px); }
+    .cart-modal-content, .admin-dashboard { background: white; max-width: 800px; width: 95%; padding: 32px; border-radius: 24px; max-height: 90vh; overflow-y: auto; }
+    .admin-dashboard { max-width: 1400px; }
+    .close-modal { float: right; font-size: 28px; cursor: pointer; font-weight: bold; transition: var(--transition); }
+    .close-modal:hover { opacity: 0.6; }
     
-    /* Admin Dashboard Tabs */
-    .admin-tabs { display: flex; gap: 10px; border-bottom: 2px solid #eee; margin-bottom: 24px; flex-wrap: wrap; }
-    .admin-tab { padding: 12px 24px; cursor: pointer; font-weight: 600; transition: var(--transition); }
-    .admin-tab.active { border-bottom: 2px solid black; color: black; }
+    /* Admin Dashboard */
+    .admin-tabs { display: flex; gap: 8px; border-bottom: 2px solid #eee; margin-bottom: 24px; flex-wrap: wrap; }
+    .admin-tab { padding: 12px 24px; cursor: pointer; font-weight: 600; transition: var(--transition); border-radius: 30px 30px 0 0; }
+    .admin-tab.active { border-bottom: 2px solid black; color: black; background: #fafafa; }
     .admin-tab:hover { background: #f5f5f5; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
     
     /* Stats Cards */
     .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
-    .stat-card { background: #f8f8f8; padding: 20px; border-radius: 12px; text-align: center; }
-    .stat-card i { font-size: 2rem; margin-bottom: 10px; color: var(--gold); }
-    .stat-card h3 { font-size: 1.8rem; font-weight: 700; }
+    .stat-card { background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%); padding: 24px; border-radius: 20px; text-align: center; border: 1px solid #eee; }
+    .stat-card i { font-size: 2rem; margin-bottom: 12px; color: var(--gold); }
+    .stat-card h3 { font-size: 1.8rem; font-weight: 800; }
     
     /* Tables */
     .orders-table, .products-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.8rem; }
-    .orders-table th, .orders-table td, .products-table th, .products-table td { padding: 10px 8px; text-align: left; border-bottom: 1px solid #eee; }
-    .orders-table th, .products-table th { background: #f5f5f5; font-weight: 600; }
-    .status-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; display: inline-block; }
+    .orders-table th, .orders-table td, .products-table th, .products-table td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #f0f0f0; }
+    .orders-table th, .products-table th { background: #fafafa; font-weight: 700; }
+    .status-badge { padding: 5px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 600; display: inline-block; }
     .status-pending { background: #fff3cd; color: #856404; }
     .status-paid { background: #d4edda; color: #155724; }
-    .status-shipped { background: #cce5ff; color: #004085; }
-    .action-btn { padding: 4px 8px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.7rem; margin: 0 2px; }
+    .action-btn { padding: 6px 12px; border: none; border-radius: 20px; cursor: pointer; font-size: 0.7rem; margin: 0 3px; }
     .btn-edit { background: var(--blue); color: white; }
     .btn-delete { background: var(--red); color: white; }
     .btn-ship { background: var(--green); color: white; }
     
-    /* Image Upload */
-    .image-upload-area { border: 2px dashed #ddd; padding: 30px; text-align: center; margin-bottom: 20px; cursor: pointer; border-radius: 8px; }
-    .image-preview { max-width: 150px; margin: 10px auto; display: block; }
+    /* Dual Image Upload */
+    .dual-upload { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0; }
+    .upload-box { border: 2px dashed #ddd; padding: 20px; text-align: center; cursor: pointer; border-radius: 16px; transition: var(--transition); }
+    .upload-box:hover { border-color: black; background: #fafafa; }
+    .upload-box.active { border-color: var(--gold); background: #fffbf0; }
+    .upload-preview { max-width: 120px; margin: 10px auto; display: block; border-radius: 12px; }
+    .image-label { font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; color: #666; }
     
     /* Payment Section */
-    .payment-info { background: #f8f8f8; padding: 20px; border-radius: 12px; margin: 20px 0; }
-    .bank-details { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; border: 1px solid #ddd; }
-    .copy-btn { background: black; color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.7rem; margin-left: 10px; }
-    .cart-item { border-bottom: 1px solid #eee; padding: 15px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .payment-info { background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%); padding: 24px; border-radius: 20px; margin: 20px 0; }
+    .bank-details { background: white; padding: 20px; border-radius: 16px; margin: 15px 0; border: 1px solid #e8e8e8; }
+    .copy-btn { background: #f0f0f0; color: black; border: none; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-size: 0.7rem; margin-left: 10px; }
+    .cart-item { border-bottom: 1px solid #f0f0f0; padding: 15px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .proof-upload-area { border: 2px dashed var(--gold); padding: 20px; text-align: center; margin: 15px 0; cursor: pointer; border-radius: 16px; background: #fffbf0; }
+    .proof-preview { max-width: 100px; margin: 10px auto; display: block; border-radius: 8px; }
     
-    /* Admin Secret Access - Hidden */
-    .admin-btn { position: fixed; bottom: 30px; right: 30px; background: rgba(0,0,0,0.4); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; opacity: 0.3; transition: var(--transition); }
+    /* Admin Secret */
+    .admin-btn { position: fixed; bottom: 30px; right: 30px; background: rgba(0,0,0,0.3); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; opacity: 0.2; transition: var(--transition); }
     .admin-btn:hover { opacity: 1; background: black; }
     
     /* Sections */
-    .section-header { text-align: center; margin-bottom: 48px; }
-    .section-header h2 { font-size: 2.2rem; font-weight: 700; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; }
     .categories, .testimonials, .newsletter, .footer { padding: 80px 0; }
-    .categories { background: var(--off-white); }
-    .testimonials { background: var(--light-grey); }
+    .categories { background: #fafafa; }
     .newsletter { background: black; color: white; text-align: center; }
-    .footer { background: #0a0a0a; color: #ddd; }
-    .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; }
-    .category-item { background: white; padding: 32px; text-align: center; cursor: pointer; border-radius: 12px; transition: var(--transition); }
+    .footer { background: #0a0a0a; color: #aaa; }
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; }
+    .category-item { background: white; padding: 32px; text-align: center; cursor: pointer; border-radius: 20px; transition: var(--transition); box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
     .category-item:hover { background: black; color: white; transform: translateY(-5px); }
-    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
-    .testimonial-card { background: white; padding: 32px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .testimonial-card { background: white; padding: 32px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
     .stars { color: var(--gold); margin-bottom: 16px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 48px; margin-bottom: 48px; }
-    .social-icons i { font-size: 1.4rem; margin-right: 18px; cursor: pointer; transition: var(--transition); }
-    .social-icons i:hover { color: white; }
-    @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-toggle { display: block; } .hero-content h1 { font-size: 2.5rem; } .container { padding: 0 20px; } .logo-text { font-size: 1.2rem; } .logo-img { height: 32px; } }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; margin-bottom: 48px; }
+    .social-icons i { font-size: 1.4rem; margin-right: 18px; cursor: pointer; }
+    input, select { border-radius: 12px; border: 1px solid #e0e0e0; padding: 12px; font-family: inherit; }
+    input:focus, select:focus { outline: none; border-color: black; }
+    @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-toggle { display: block; } .hero-content h1 { font-size: 2.5rem; } .dual-upload { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -153,13 +166,13 @@
 <!-- Hidden Admin Access -->
 <div class="admin-btn" id="secretAdminBtn"><i class="fas fa-crown"></i></div>
 
-<!-- Admin Login Modal - Hidden -->
+<!-- Admin Login Modal -->
 <div id="loginModal" class="modal">
-  <div class="admin-dashboard" style="max-width: 400px;">
+  <div class="admin-dashboard" style="max-width: 420px;">
     <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
-    <h2>Admin Access</h2>
-    <input type="password" id="adminPassword" placeholder="Enter Admin Key" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:8px;">
-    <button onclick="adminLogin()" style="width:100%; padding:12px; background:black; color:white; border:none; border-radius:8px;">Verify Access</button>
+    <h2 style="margin-bottom: 20px;">🔐 Admin Portal</h2>
+    <input type="password" id="adminPassword" placeholder="Enter Access Key" style="width:100%; padding:14px; margin:10px 0; border-radius:12px;">
+    <button onclick="adminLogin()" style="width:100%; padding:14px; background:black; color:white; border:none; border-radius:12px; font-weight:600;">Verify Access</button>
   </div>
 </div>
 
@@ -167,8 +180,7 @@
 <div id="adminModal" class="modal">
   <div class="admin-dashboard">
     <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
-    <h2><i class="fas fa-crown"></i> Kivaro Admin Dashboard</h2>
-    
+    <h2><i class="fas fa-crown"></i> Kivaro Admin Console</h2>
     <div class="admin-tabs">
       <div class="admin-tab active" data-tab="dashboard">📊 Dashboard</div>
       <div class="admin-tab" data-tab="orders">📋 Orders</div>
@@ -176,31 +188,47 @@
       <div class="admin-tab" data-tab="add-product">➕ Add Product</div>
       <div class="admin-tab" data-tab="settings">⚙️ Settings</div>
     </div>
-    
-    <div id="tab-dashboard" class="tab-content active"><div id="statsGrid"></div><h3>Recent Orders</h3><div id="recentOrdersList"></div><h3>Low Stock Alert</h3><div id="lowStockList"></div></div>
+    <div id="tab-dashboard" class="tab-content active"><div id="statsGrid"></div><h3>📦 Recent Orders</h3><div id="recentOrdersList"></div><h3>⚠️ Low Stock Alert</h3><div id="lowStockList"></div></div>
     <div id="tab-orders" class="tab-content"><div style="margin-bottom:20px;"><button class="filter-btn" onclick="filterOrders('all')">All</button><button class="filter-btn" onclick="filterOrders('pending')">Pending</button><button class="filter-btn" onclick="filterOrders('paid')">Paid</button><button class="filter-btn" onclick="filterOrders('shipped')">Shipped</button></div><div id="fullOrdersList"></div></div>
     <div id="tab-products" class="tab-content"><div id="productsManageList"></div></div>
     <div id="tab-add-product" class="tab-content">
-      <input type="text" id="prodName" placeholder="Product Name" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <input type="number" id="prodPrice" placeholder="Price (ZAR)" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <input type="number" id="prodStock" placeholder="Stock Quantity" value="10" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <select id="prodType" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;"><option value="Hoodie">Hoodie</option><option value="T-Shirt">T-Shirt</option><option value="Polo T-Shirt">Polo T-Shirt</option><option value="Shorts">Shorts</option><option value="Cap">Cap</option></select>
-      <input type="text" id="prodColors" placeholder="Available Colors (comma separated: Black, White, Gray)" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <input type="text" id="prodSizes" placeholder="Available Sizes (comma separated: S, M, L, XL)" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <div class="image-upload-area" onclick="document.getElementById('imageUpload').click()"><i class="fas fa-cloud-upload-alt" style="font-size:48px;"></i><p>Click to upload product image</p></div>
-      <input type="file" id="imageUpload" accept="image/jpeg,image/png" style="display:none;" onchange="previewImage(this)">
-      <img id="imagePreview" class="image-preview" style="display:none;"><input type="hidden" id="prodImageData">
-      <button onclick="addProductWithImage()" style="width:100%; padding:12px; background:black; color:white; margin-top:10px; border:none; border-radius:8px;">➕ Add Product</button>
+      <input type="text" id="prodName" placeholder="Product Name" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      <input type="number" id="prodPrice" placeholder="Price (ZAR)" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      <input type="number" id="prodStock" placeholder="Stock Quantity" value="10" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      <select id="prodType" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;"><option value="Hoodie">Hoodie</option><option value="T-Shirt">T-Shirt</option><option value="Polo T-Shirt">Polo T-Shirt</option><option value="Shorts">Shorts</option><option value="Cap">Cap</option></select>
+      <input type="text" id="prodColors" placeholder="Colors (comma: Black, White)" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      <input type="text" id="prodSizes" placeholder="Sizes (comma: S, M, L, XL)" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      
+      <div class="dual-upload">
+        <div class="upload-box" onclick="document.getElementById('frontUpload').click()">
+          <div class="image-label">📸 FRONT VIEW</div>
+          <i class="fas fa-camera" style="font-size:32px; margin:10px 0; display:block;"></i>
+          <p>Upload front image</p>
+          <img id="frontPreview" class="upload-preview" style="display:none;">
+        </div>
+        <div class="upload-box" onclick="document.getElementById('backUpload').click()">
+          <div class="image-label">🔄 BACK VIEW</div>
+          <i class="fas fa-camera-retro" style="font-size:32px; margin:10px 0; display:block;"></i>
+          <p>Upload back image</p>
+          <img id="backPreview" class="upload-preview" style="display:none;">
+        </div>
+      </div>
+      <input type="file" id="frontUpload" accept="image/jpeg,image/png" style="display:none;" onchange="previewFrontImage(this)">
+      <input type="file" id="backUpload" accept="image/jpeg,image/png" style="display:none;" onchange="previewBackImage(this)">
+      <input type="hidden" id="prodFrontImageData">
+      <input type="hidden" id="prodBackImageData">
+      
+      <button onclick="addProductWithDualImages()" style="width:100%; padding:14px; background:black; color:white; margin-top:10px; border:none; border-radius:12px; font-weight:600;">➕ Add Product (Front & Back)</button>
     </div>
     <div id="tab-settings" class="tab-content">
-      <h3>WhatsApp Notifications</h3><input type="text" id="adminWhatsApp" placeholder="Admin WhatsApp" value="+27750303" style="width:100%; padding:12px; border:1px solid #ddd; border-radius:8px;"><button onclick="saveWhatsApp()" style="margin-top:10px; padding:10px 20px; background:black; color:white; border:none; border-radius:8px;">Save</button>
-      <h3 style="margin-top:20px;">Bank Details</h3><input type="text" id="bankName" placeholder="Bank Name" value="STANDARD BANK" style="width:100%; padding:10px; margin:5px 0; border:1px solid #ddd; border-radius:8px;"><input type="text" id="accountNumber" placeholder="Account Number" value="10221026744" style="width:100%; padding:10px; margin:5px 0; border:1px solid #ddd; border-radius:8px;"><input type="text" id="accountName" placeholder="Account Name" value="Kivaro Clothing" style="width:100%; padding:10px; margin:5px 0; border:1px solid #ddd; border-radius:8px;"><button onclick="saveBankDetails()" style="margin-top:10px; padding:10px 20px; background:black; color:white; border:none; border-radius:8px;">Save Bank Details</button>
-      <h3 style="margin-top:20px;">Export Data</h3><button onclick="exportOrders()" style="padding:10px 20px; background:black; color:white; border:none; border-radius:8px;">📥 Export Orders (CSV)</button>
+      <h3>📱 WhatsApp Notifications</h3><input type="text" id="adminWhatsApp" placeholder="Admin WhatsApp" value="+27750303" style="width:100%; padding:12px; border-radius:12px;"><button onclick="saveWhatsApp()" style="margin-top:10px; padding:12px 24px; background:black; color:white; border:none; border-radius:12px;">Save</button>
+      <h3 style="margin-top:30px;">🏦 Bank Details</h3><input type="text" id="bankName" placeholder="Bank Name" value="STANDARD BANK" style="width:100%; padding:10px; margin:5px 0; border-radius:12px;"><input type="text" id="accountNumber" placeholder="Account Number" value="10221026744" style="width:100%; padding:10px; margin:5px 0; border-radius:12px;"><input type="text" id="accountName" placeholder="Account Name" value="Kivaro Clothing" style="width:100%; padding:10px; margin:5px 0; border-radius:12px;"><button onclick="saveBankDetails()" style="margin-top:10px; padding:12px 24px; background:black; color:white; border:none; border-radius:12px;">Save</button>
+      <h3 style="margin-top:30px;">📊 Export Data</h3><button onclick="exportOrders()" style="padding:12px 24px; background:black; color:white; border:none; border-radius:12px;">📥 Export Orders (CSV)</button>
     </div>
   </div>
 </div>
 
-<!-- Cart Modal -->
+<!-- Cart Modal with Proof of Payment -->
 <div id="cartModal" class="modal">
   <div class="cart-modal-content">
     <span class="close-modal" onclick="closeModal('cartModal')">&times;</span>
@@ -209,53 +237,68 @@
     <div class="payment-info" id="paymentSection" style="display:none;">
       <h3>💳 Complete Your Order</h3>
       <div class="bank-details" id="bankDetailsDisplay"></div>
-      <p style="font-size:13px; margin:10px 0;">📋 Please fill in your details below:</p>
-      <input type="text" id="customerName" placeholder="Full name" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <input type="email" id="customerEmail" placeholder="Email address" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <input type="tel" id="customerWhatsApp" placeholder="WhatsApp number (e.g., 0712345678)" style="width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px;">
-      <p style="font-size:12px; color:#666;">📱 We'll send order updates to your WhatsApp</p>
-      <button onclick="confirmPayment()" style="width:100%; padding:14px; background:black; color:white; border:none; border-radius:8px; font-weight:bold; margin-top:15px;">✅ CONFIRM ORDER & PAY</button>
+      <p style="font-size:13px; margin:15px 0; color:#666;">📋 Please fill in your details below:</p>
+      <input type="text" id="customerName" placeholder="Full name" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      <input type="email" id="customerEmail" placeholder="Email address" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      <input type="tel" id="customerWhatsApp" placeholder="WhatsApp number (e.g., 0712345678)" style="width:100%; padding:12px; margin:8px 0; border-radius:12px;">
+      
+      <div class="proof-upload-area" onclick="document.getElementById('proofUpload').click()">
+        <i class="fas fa-receipt" style="font-size:36px; margin-bottom:10px; display:block;"></i>
+        <p>📸 Upload Proof of Payment (Screenshot/Photo)</p>
+        <p style="font-size:12px; color:#666;">After making payment, upload your proof here</p>
+      </div>
+      <input type="file" id="proofUpload" accept="image/jpeg,image/png,image/jpg" style="display:none;" onchange="previewProof(this)">
+      <img id="proofPreview" class="proof-preview" style="display:none; max-width:120px; margin:10px auto;">
+      <input type="hidden" id="proofImageData">
+      
+      <button onclick="confirmPayment()" style="width:100%; padding:16px; background:black; color:white; border:none; border-radius:12px; font-weight:bold; margin-top:20px; font-size:1rem;">✅ SUBMIT ORDER & PROOF OF PAYMENT</button>
+      <p style="font-size:12px; text-align:center; margin-top:15px; color:#666;">Your order will be processed after proof verification</p>
     </div>
   </div>
 </div>
 
 <main>
-  <section class="hero" id="home"><div class="hero-content"><h1>Beyond the Street.<br>Inside the Luxe.</h1><p style="margin-bottom:32px;">Kivaro — Premium South African streetwear for the fearless.</p><button class="btn-primary" onclick="scrollToSection('shop')">SHOP NOW →</button></div></section>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Beyond the Street.<br>Inside the Luxe.</h1>
+      <p class="tagline">Kivaro — Premium South African streetwear crafted for the fearless, the bold, and the modern minimalist.</p>
+      <button class="btn-primary" onclick="scrollToSection('shop')">SHOP NOW →</button>
+    </div>
+  </section>
 
-  <div class="container" id="shop"><div class="section-header"><h2>SHOP COLLECTION</h2><p>Premium streetwear for every occasion</p></div>
+  <div class="container" id="shop">
+    <div class="section-header"><h2>SHOP COLLECTION</h2><p>Premium streetwear for every occasion</p></div>
     <div class="category-filters" id="categoryFilters"><button class="filter-btn active" data-category="all">ALL</button><button class="filter-btn" data-category="Hoodie">HOODIES</button><button class="filter-btn" data-category="T-Shirt">T-SHIRTS</button><button class="filter-btn" data-category="Polo T-Shirt">POLO SHIRTS</button><button class="filter-btn" data-category="Shorts">SHORTS</button><button class="filter-btn" data-category="Cap">CAPS</button></div>
     <div class="products-grid" id="allProductsGrid"></div>
   </div>
 
-  <section class="categories"><div class="container"><div class="section-header"><h2>OUR COLLECTIONS</h2></div>
-    <div class="category-grid"><div class="category-item" onclick="filterByCategory('Hoodie')"><i class="fas fa-tshirt"></i><h3>Hoodies</h3></div><div class="category-item" onclick="filterByCategory('T-Shirt')"><i class="fas fa-shirt"></i><h3>T-Shirts</h3></div><div class="category-item" onclick="filterByCategory('Polo T-Shirt')"><i class="fas fa-user-tie"></i><h3>Polo Shirts</h3></div><div class="category-item" onclick="filterByCategory('Shorts')"><i class="fas fa-umbrella-beach"></i><h3>Shorts</h3></div><div class="category-item" onclick="filterByCategory('Cap')"><i class="fas fa-hat-cowboy"></i><h3>Caps</h3></div></div></div></section>
+  <section class="categories"><div class="container"><div class="section-header"><h2>OUR COLLECTIONS</h2><p>Explore our signature styles</p></div>
+    <div class="category-grid"><div class="category-item" onclick="filterByCategory('Hoodie')"><i class="fas fa-tshirt"></i><h3>Hoodies</h3><p>Heavyweight comfort</p></div><div class="category-item" onclick="filterByCategory('T-Shirt')"><i class="fas fa-shirt"></i><h3>T-Shirts</h3><p>Premium cotton</p></div><div class="category-item" onclick="filterByCategory('Polo T-Shirt')"><i class="fas fa-user-tie"></i><h3>Polo Shirts</h3><p>Smart casual</p></div><div class="category-item" onclick="filterByCategory('Shorts')"><i class="fas fa-umbrella-beach"></i><h3>Shorts</h3><p>Summer essential</p></div><div class="category-item" onclick="filterByCategory('Cap')"><i class="fas fa-hat-cowboy"></i><h3>Caps</h3><p>Finishing touch</p></div></div></div></section>
 
-  <div class="container" id="about"><div class="about-section" style="padding:80px 0; display:flex; gap:60px; flex-wrap:wrap;"><div style="flex:1;"><div style="color:var(--gold); margin-bottom:20px;">✦ FOUNDED BY MIHLE MANONO ✦</div><h2>Born in <span style="color:var(--gold);">South Africa</span>,<br>Worn by the World.</h2><p style="margin-top:20px;">Kivaro was founded by Mihle Manono with a vision to bridge African creativity with global streetwear culture. Every piece is crafted with premium materials and uncompromising quality.</p><div style="display:flex; gap:20px; margin-top:30px;"><div><i class="fas fa-map-marker-alt"></i> 🇿🇦 Proudly SA</div><div><i class="fas fa-hand-sparkles"></i> Handcrafted</div><div><i class="fas fa-globe"></i> Worldwide Shipping</div></div></div><div style="flex:1; background:#f5f5f5; min-height:300px; display:flex; align-items:center; justify-content:center; border-radius:12px;"><i class="fas fa-tshirt" style="font-size:80px; color:#aaa;"></i></div></div></div>
+  <div class="container" id="about"><div style="padding:80px 0; display:flex; gap:60px; flex-wrap:wrap; align-items:center;"><div style="flex:1;"><div style="color:var(--gold); margin-bottom:20px; font-weight:600;">✦ FOUNDED BY MIHLE MANONO ✦</div><h2 style="font-size:2.5rem; font-weight:800;">Born in <span style="color:var(--gold);">South Africa</span>,<br>Worn by the World.</h2><p style="margin-top:20px; line-height:1.6; color:#444;">Kivaro was founded by Mihle Manono with a vision to bridge African creativity with global streetwear culture. Every piece is crafted with premium heavyweight cotton, double-stitched seams, and custom-developed fabrics that only get better with age.</p><div style="display:flex; gap:24px; margin-top:30px;"><div><i class="fas fa-map-marker-alt"></i> 🇿🇦 Proudly SA</div><div><i class="fas fa-hand-sparkles"></i> Handcrafted</div><div><i class="fas fa-globe"></i> Worldwide Shipping</div></div></div><div style="flex:1; background:linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); min-height:350px; display:flex; align-items:center; justify-content:center; border-radius:24px;"><i class="fas fa-tshirt" style="font-size:100px; color:#aaa;"></i></div></div></div>
 
-  <section class="testimonials"><div class="container"><div class="testimonial-grid"><div class="testimonial-card"><div class="stars">★★★★★</div><p>"The most comfortable hoodie I've ever owned. The fit is immaculate."</p><div class="customer-name">— JORDAN M.</div></div><div class="testimonial-card"><div class="stars">★★★★★</div><p>"Proud to support a South African brand! Quality is insane."</p><div class="customer-name">— TAYLOR R.</div></div><div class="testimonial-card"><div class="stars">★★★★★</div><p>"Fast shipping and premium materials. Will order again!"</p><div class="customer-name">— ALEXIS K.</div></div></div></div></section>
+  <section class="testimonials"><div class="container"><div class="section-header"><h2>TRUSTED BY DREAMERS</h2><p>Real reviews from the Kivaro community</p></div><div class="testimonial-grid"><div class="testimonial-card"><div class="stars">★★★★★</div><p>"The most comfortable hoodie I've ever owned. The fit is immaculate and the fabric feels like a dream."</p><div class="customer-name" style="margin-top:15px; font-weight:600;">— JORDAN M.</div></div><div class="testimonial-card"><div class="stars">★★★★★</div><p>"Kivaro’s aesthetic is unmatched. Proud to support a South African brand! Quality is insane."</p><div class="customer-name" style="margin-top:15px; font-weight:600;">— TAYLOR R.</div></div><div class="testimonial-card"><div class="stars">★★★★★</div><p>"Fast shipping, premium materials, and the customer service is top tier. Will order again!"</p><div class="customer-name" style="margin-top:15px; font-weight:600;">— ALEXIS K.</div></div></div></div></section>
 
-  <section class="newsletter" id="contact"><h2>INSIDER ACCESS</h2><p>Sign up for early drops & 10% off your first order.</p><div class="news-form" style="display:flex; justify-content:center; gap:12px; max-width:500px; margin:0 auto;"><input type="email" id="newsEmail" placeholder="Your email address" style="flex:2; padding:14px; background:#2a2a2a; border:none; color:white; border-radius:4px;"><button onclick="subscribeNewsletter()" style="background:white; color:black; padding:14px 28px; border:none; font-weight:700; border-radius:4px;">SUBSCRIBE</button></div></section>
+  <section class="newsletter" id="contact"><h2>INSIDER ACCESS</h2><p>Sign up for early drops & 10% off your first order.</p><div style="display:flex; justify-content:center; gap:12px; max-width:500px; margin:24px auto 0;"><input type="email" id="newsEmail" placeholder="Your email address" style="flex:2; padding:14px; background:#2a2a2a; border:none; color:white; border-radius:12px;"><button onclick="subscribeNewsletter()" style="background:white; color:black; padding:14px 32px; border:none; font-weight:700; border-radius:12px;">Subscribe</button></div></section>
 
-  <footer class="footer"><div class="footer-grid"><div class="footer-col"><h4>KIVARO</h4><ul><li>About Us</li><li>Sustainability</li><li>Lookbook</li></ul></div><div class="footer-col"><h4>SUPPORT</h4><ul><li>FAQ</li><li>Shipping & Returns</li><li>Size Guide</li></ul></div><div class="footer-col"><h4>CONNECT</h4><div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-tiktok"></i><i class="fab fa-youtube"></i></div><p style="margin-top:20px;"><i class="fas fa-envelope"></i> manonomihle101@gmail.com</p><p><i class="fas fa-phone"></i> (+27) 75 0303</p></div></div><div class="copyright">© 2025 KIVARO — PREMIUM SOUTH AFRICAN STREETWEAR. FOUNDED BY MIHLE MANONO.</div></footer>
+  <footer class="footer"><div class="footer-grid"><div class="footer-col"><h4>KIVARO</h4><ul><li>About Us</li><li>Sustainability</li><li>Lookbook</li></ul></div><div class="footer-col"><h4>SUPPORT</h4><ul><li>FAQ</li><li>Shipping & Returns</li><li>Size Guide</li><li>Contact</li></ul></div><div class="footer-col"><h4>CONNECT</h4><div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-tiktok"></i><i class="fab fa-youtube"></i></div><p style="margin-top:20px;"><i class="fas fa-envelope"></i> manonomihle101@gmail.com</p><p><i class="fas fa-phone"></i> (+27) 75 0303</p></div></div><div class="copyright" style="text-align:center; padding-top:32px; border-top:1px solid #222;">© 2025 KIVARO — PREMIUM SOUTH AFRICAN STREETWEAR. FOUNDED BY MIHLE MANONO.</div></footer>
 </main>
 
 <script>
-  let products = [], cart = [], orders = [], currentFilter = "all", currentImageData = null;
-  let adminWhatsApp = localStorage.getItem('kivaro_whatsapp') || "+27750300";
+  let products = [], cart = [], orders = [], currentFilter = "all";
+  let adminWhatsApp = localStorage.getItem('kivaro_whatsapp') || "+27750303";
   let bankDetails = JSON.parse(localStorage.getItem('kivaro_bank')) || { name: "STANDARD BANK", account: "10221026744", accountName: "Kivaro Clothing" };
   let orderFilter = "all";
   const ADMIN_KEY = "kivaro2025";
+  let currentFrontImage = null, currentBackImage = null, currentProofImage = null;
 
-  const defaultColors = ["Black", "White", "Gray", "Navy", "Beige"];
+  const defaultColors = ["Black", "White", "Gray", "Navy"];
   const defaultSizes = ["XS", "S", "M", "L", "XL", "XXL"];
   
   const defaultProducts = [
-    { id: 1, name: "MONOLITH OVERSIZED HOODIE", price: 1299, stock: 15, imageData: "https://placehold.co/500x600/1a1a1a/white?text=BLACK+HOODIE", type: "Hoodie", colors: ["Black", "Gray", "Navy"], sizes: ["S","M","L","XL"] },
-    { id: 2, name: "ZENITH GRAY HOODIE", price: 1199, stock: 12, imageData: "https://placehold.co/500x600/4a4a4a/white?text=GRAY+HOODIE", type: "Hoodie", colors: ["Gray", "Black"], sizes: ["S","M","L","XL"] },
-    { id: 3, name: "CLASSIC LOGO T-SHIRT", price: 599, stock: 25, imageData: "https://placehold.co/500x600/f5f5f5/black?text=WHITE+TEE", type: "T-Shirt", colors: ["White", "Black", "Gray"], sizes: ["XS","S","M","L","XL","XXL"] },
-    { id: 4, name: "PREMIUM POLO SHIRT", price: 899, stock: 8, imageData: "https://placehold.co/500x600/2c5e3a/white?text=FOREST+POLO", type: "Polo T-Shirt", colors: ["Navy", "Black", "White"], sizes: ["S","M","L","XL"] },
-    { id: 5, name: "CARGO SHORTS", price: 799, stock: 20, imageData: "https://placehold.co/500x600/5a5a5a/white?text=CARGO+SHORTS", type: "Shorts", colors: ["Black", "Khaki", "Olive"], sizes: ["28","30","32","34","36"] },
-    { id: 6, name: "EMBROIDERED CAP", price: 399, stock: 30, imageData: "https://placehold.co/500x600/1a1a1a/white?text=BLACK+CAP", type: "Cap", colors: ["Black", "Navy", "Gray"], sizes: ["One Size"] }
+    { id: 1, name: "MONOLITH OVERSIZED HOODIE", price: 1299, stock: 15, frontImage: "https://placehold.co/500x600/1a1a1a/white?text=FRONT", backImage: "https://placehold.co/500x600/2c2c2c/white?text=BACK", type: "Hoodie", colors: ["Black", "Gray", "Navy"], sizes: ["S","M","L","XL"] },
+    { id: 2, name: "ZENITH GRAY HOODIE", price: 1199, stock: 12, frontImage: "https://placehold.co/500x600/4a4a4a/white?text=FRONT", backImage: "https://placehold.co/500x600/5a5a5a/white?text=BACK", type: "Hoodie", colors: ["Gray", "Black"], sizes: ["S","M","L","XL"] },
+    { id: 3, name: "CLASSIC LOGO T-SHIRT", price: 599, stock: 25, frontImage: "https://placehold.co/500x600/f5f5f5/black?text=FRONT", backImage: "https://placehold.co/500x600/e5e5e5/black?text=BACK", type: "T-Shirt", colors: ["White", "Black", "Gray"], sizes: ["XS","S","M","L","XL","XXL"] }
   ];
 
   function loadData() {
@@ -274,21 +317,20 @@
     if(container) {
       container.innerHTML = filtered.map(p => `
         <div class="product-card">
-          <div class="product-image" style="background-image: url('${p.imageData}');"></div>
-          <div class="product-category-badge">${p.type}</div>
-          <div class="product-title">${p.name}</div>
-          <div class="product-price">R ${p.price.toLocaleString()}</div>
-          <div class="select-group">
-            <select class="color-select" id="color-${p.id}">
-              <option value="">Select Color</option>
-              ${(p.colors || defaultColors).map(c => `<option value="${c}">${c}</option>`).join('')}
-            </select>
-            <select class="size-select" id="size-${p.id}">
-              <option value="">Select Size</option>
-              ${(p.sizes || defaultSizes).map(s => `<option value="${s}">${s}</option>`).join('')}
-            </select>
+          <div class="product-image-container">
+            <div class="product-image-front" style="background-image: url('${p.frontImage}');"></div>
+            <div class="product-image-back" style="background-image: url('${p.backImage || p.frontImage}');"></div>
           </div>
-          <button class="btn-add" onclick="addToCart(${p.id})">ADD TO CART</button>
+          <div class="product-info">
+            <div class="product-category-badge">${p.type}</div>
+            <div class="product-title">${p.name}</div>
+            <div class="product-price">R ${p.price.toLocaleString()}</div>
+            <div class="select-group">
+              <select class="color-select" id="color-${p.id}"><option value="">Select Color</option>${(p.colors || defaultColors).map(c => `<option value="${c}">${c}</option>`).join('')}</select>
+              <select class="size-select" id="size-${p.id}"><option value="">Select Size</option>${(p.sizes || defaultSizes).map(s => `<option value="${s}">${s}</option>`).join('')}</select>
+            </div>
+            <button class="btn-add" onclick="addToCart(${p.id})">ADD TO CART</button>
+          </div>
         </div>`).join('');
     }
   }
@@ -299,10 +341,8 @@
     const sizeSelect = document.getElementById(`size-${id}`);
     const selectedColor = colorSelect ? colorSelect.value : "";
     const selectedSize = sizeSelect ? sizeSelect.value : "";
-    
     if(!selectedColor) { alert('Please select a color'); return; }
     if(!selectedSize) { alert('Please select a size'); return; }
-    
     if(product && product.stock > 0) {
       const existing = cart.find(i => i.id === id && i.size === selectedSize && i.color === selectedColor);
       if(existing) { existing.quantity++; }
@@ -318,7 +358,7 @@
     if(cart.length === 0) { alert('Your bag is empty'); return; }
     const total = cart.reduce((s,i)=>s+(i.price*i.quantity),0);
     const orderRef = `KIVARO-${Date.now()}`;
-    document.getElementById('cartItems').innerHTML = `<div class="order-summary">${cart.map(i => `<div class="cart-item"><span><strong>${i.name}</strong><br>Color: ${i.color} | Size: ${i.size} | Qty: ${i.quantity}</span><span>R ${(i.price*i.quantity).toLocaleString()}</span></div>`).join('')}<h3 style="margin-top:15px;">Total: R ${total.toLocaleString()}</h3></div>`;
+    document.getElementById('cartItems').innerHTML = `<div>${cart.map(i => `<div class="cart-item"><span><strong>${i.name}</strong><br>Color: ${i.color} | Size: ${i.size} | Qty: ${i.quantity}</span><span>R ${(i.price*i.quantity).toLocaleString()}</span></div>`).join('')}<h3 style="margin-top:15px;">Total: R ${total.toLocaleString()}</h3></div>`;
     document.getElementById('bankDetailsDisplay').innerHTML = `<p><strong>Bank:</strong> ${bankDetails.name}</p><p><strong>Account Number:</strong> ${bankDetails.account} <button class="copy-btn" onclick="copyToClipboard('${bankDetails.account}')">Copy</button></p><p><strong>Account Name:</strong> ${bankDetails.accountName}</p><p><strong>Reference:</strong> ${orderRef} <button class="copy-btn" onclick="copyToClipboard('${orderRef}')">Copy</button></p><p><strong>Amount:</strong> R ${total.toLocaleString()}</p>`;
     document.getElementById('paymentSection').style.display = 'block';
     document.getElementById('cartModal').style.display = 'flex';
@@ -326,35 +366,69 @@
     window.currentOrderTotal = total;
   }
   
+  function previewProof(input) {
+    if(input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = e => { currentProofImage = e.target.result; document.getElementById('proofPreview').src = currentProofImage; document.getElementById('proofPreview').style.display = 'block'; document.getElementById('proofImageData').value = currentProofImage; };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  
   function confirmPayment() {
     const name = document.getElementById('customerName').value;
     const email = document.getElementById('customerEmail').value;
     const whatsapp = document.getElementById('customerWhatsApp').value;
+    const proofImage = document.getElementById('proofImageData').value;
     if(!name || !email || !email.includes('@') || !whatsapp) { alert('Please fill in all your details (Name, Email, WhatsApp)'); return; }
+    if(!proofImage) { alert('Please upload proof of payment'); return; }
     const total = window.currentOrderTotal;
     const orderRef = window.currentOrderRef;
-    const order = { id: Date.now(), items: [...cart], total, name, email, whatsapp, date: new Date().toLocaleString(), orderRef, status: 'pending' };
+    const order = { id: Date.now(), items: [...cart], total, name, email, whatsapp, proofImage, date: new Date().toLocaleString(), orderRef, status: 'pending' };
     orders.unshift(order);
     saveOrders();
     cart.forEach(item => { const p = products.find(pr => pr.id === item.id); if(p) p.stock -= item.quantity; });
     saveProducts();
     
-    const msg = `🛍️ *NEW KIVARO ORDER!*\n\n*Order:* ${orderRef}\n*Name:* ${name}\n*Email:* ${email}\n*WhatsApp:* ${whatsapp}\n\n*Items:*\n${order.items.map(i => `• ${i.name} (${i.color}, ${i.size}) x${i.quantity} = R${(i.price*i.quantity).toLocaleString()}`).join('\n')}\n\n*Total:* R${total.toLocaleString()}\n*Status:* Pending Payment\n\n*Bank Details:*\n${bankDetails.name}\nAcc: ${bankDetails.account}\nRef: ${orderRef}`;
+    const msg = `🛍️ *NEW KIVARO ORDER!*\n\n*Order:* ${orderRef}\n*Name:* ${name}\n*Email:* ${email}\n*WhatsApp:* ${whatsapp}\n\n*Items:*\n${order.items.map(i => `• ${i.name} (${i.color}, ${i.size}) x${i.quantity} = R${(i.price*i.quantity).toLocaleString()}`).join('\n')}\n\n*Total:* R${total.toLocaleString()}\n*Proof of Payment:* Uploaded in admin panel\n*Status:* Pending Verification`;
     window.open(`https://wa.me/${adminWhatsApp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(msg)}`, '_blank');
     
-    alert(`✅ ORDER PLACED!\n\nReference: ${orderRef}\nReceipt sent to: ${email}\nWhatsApp confirmation sent to: ${whatsapp}\n\nWe'll notify you once payment is confirmed.`);
+    alert(`✅ ORDER PLACED!\n\nReference: ${orderRef}\nReceipt sent to: ${email}\nWhatsApp confirmation sent to: ${whatsapp}\n\nProof of payment received. We'll verify and confirm within 24 hours.`);
     cart = []; updateCartUI(); closeModal('cartModal'); renderAdminDashboard();
+  }
+  
+  function previewFrontImage(input) {
+    if(input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = e => { currentFrontImage = e.target.result; document.getElementById('frontPreview').src = currentFrontImage; document.getElementById('frontPreview').style.display = 'block'; document.getElementById('prodFrontImageData').value = currentFrontImage; };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  
+  function previewBackImage(input) {
+    if(input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = e => { currentBackImage = e.target.result; document.getElementById('backPreview').src = currentBackImage; document.getElementById('backPreview').style.display = 'block'; document.getElementById('prodBackImageData').value = currentBackImage; };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  
+  function addProductWithDualImages() {
+    let name = document.getElementById('prodName').value, price = parseInt(document.getElementById('prodPrice').value), stock = parseInt(document.getElementById('prodStock').value), type = document.getElementById('prodType').value;
+    let frontImage = document.getElementById('prodFrontImageData').value, backImage = document.getElementById('prodBackImageData').value;
+    let colors = document.getElementById('prodColors').value.split(',').map(c => c.trim()).filter(c => c);
+    let sizes = document.getElementById('prodSizes').value.split(',').map(s => s.trim()).filter(s => s);
+    if(!name || !price || !frontImage) { alert('Fill all fields and upload at least front image'); return; }
+    products.push({ id: Date.now(), name, price, stock: stock || 10, frontImage, backImage: backImage || frontImage, type, colors: colors.length ? colors : defaultColors, sizes: sizes.length ? sizes : defaultSizes });
+    saveProducts(); renderAllProducts(); renderAdminDashboard();
+    document.getElementById('prodName').value = ''; document.getElementById('prodPrice').value = ''; document.getElementById('prodFrontImageData').value = ''; document.getElementById('prodBackImageData').value = ''; document.getElementById('frontPreview').style.display = 'none'; document.getElementById('backPreview').style.display = 'none'; document.getElementById('frontUpload').value = ''; document.getElementById('backUpload').value = ''; document.getElementById('prodColors').value = ''; document.getElementById('prodSizes').value = '';
+    alert('Product added with front & back images!');
   }
   
   function renderAdminDashboard() {
     const totalSales = orders.reduce((sum, o) => sum + o.total, 0);
     const totalOrders = orders.length;
     const pendingOrders = orders.filter(o => o.status === 'pending').length;
-    document.getElementById('statsGrid') && (document.getElementById('statsGrid').innerHTML = `
-      <div class="stat-card"><i class="fas fa-chart-line"></i><h3>R ${totalSales.toLocaleString()}</h3><p>Total Sales</p></div>
-      <div class="stat-card"><i class="fas fa-shopping-cart"></i><h3>${totalOrders}</h3><p>Total Orders</p></div>
-      <div class="stat-card"><i class="fas fa-clock"></i><h3>${pendingOrders}</h3><p>Pending Orders</p></div>
-      <div class="stat-card"><i class="fas fa-tag"></i><h3>${products.length}</h3><p>Products</p></div>`);
+    document.getElementById('statsGrid') && (document.getElementById('statsGrid').innerHTML = `<div class="stat-card"><i class="fas fa-chart-line"></i><h3>R ${totalSales.toLocaleString()}</h3><p>Total Sales</p></div><div class="stat-card"><i class="fas fa-shopping-cart"></i><h3>${totalOrders}</h3><p>Total Orders</p></div><div class="stat-card"><i class="fas fa-clock"></i><h3>${pendingOrders}</h3><p>Pending Orders</p></div><div class="stat-card"><i class="fas fa-tag"></i><h3>${products.length}</h3><p>Products</p></div>`);
     const recentOrders = orders.slice(0, 5);
     document.getElementById('recentOrdersList') && (document.getElementById('recentOrdersList').innerHTML = renderOrdersTable(recentOrders));
     const lowStock = products.filter(p => p.stock < 10);
@@ -365,43 +439,19 @@
   
   function renderOrdersTable(orderList) {
     if(!orderList.length) return '<p>No orders found</p>';
-    return `<table class="orders-table"><thead><tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>WhatsApp</th><th>Actions</th></tr></thead><tbody>${orderList.map((o,i) => `<tr><td>${o.orderRef || 'KIV-'+o.id}</td><td>${o.name || o.email}</td><td>${o.items.map(it => `${it.name} (${it.color},${it.size})`).join(', ').substring(0,40)}</td><td>R ${o.total.toLocaleString()}</td><td><span class="status-badge status-${o.status || 'pending'}">${o.status || 'pending'}</span></td><td>${o.whatsapp || '-'}</td><td><button class="action-btn btn-ship" onclick="updateOrderStatus(${o.id},'shipped')">Ship</button><button class="action-btn btn-edit" onclick="viewOrder(${o.id})">View</button></td></tr>`).join('')}</tbody></table>`;
+    return `<table class="orders-table"><thead><tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Proof</th><th>Actions</th></tr></thead><tbody>${orderList.map((o,i) => `<tr><td>${o.orderRef || 'KIV-'+o.id}</td><td>${o.name || o.email}</td><td>${o.items.map(it => `${it.name} (${it.color},${it.size})`).join(', ').substring(0,40)}</td><td>R ${o.total.toLocaleString()}</td><td><span class="status-badge status-${o.status || 'pending'}">${o.status || 'pending'}</span></td><td>${o.proofImage ? '<i class="fas fa-check-circle" style="color:green;" onclick="viewProof(\''+o.proofImage+'\')" style="cursor:pointer;"> View</i>' : '-'}</td><td><button class="action-btn btn-ship" onclick="updateOrderStatus(${o.id},'paid')">Verify</button><button class="action-btn btn-edit" onclick="viewOrder(${o.id})">View</button></td></tr>`).join('')}</tbody></table>`;
   }
   
-  function renderFullOrders() {
-    let filtered = orders;
-    if(orderFilter !== 'all') filtered = orders.filter(o => (o.status || 'pending') === orderFilter);
-    document.getElementById('fullOrdersList') && (document.getElementById('fullOrdersList').innerHTML = renderOrdersTable(filtered));
-  }
-  
-  function renderProductsManage() {
-    const container = document.getElementById('productsManageList');
-    if(container) {
-      container.innerHTML = `<table class="products-table"><thead><tr><th>Image</th><th>Name</th><th>Type</th><th>Price</th><th>Stock</th><th>Colors</th><th>Sizes</th><th>Actions</th></tr></thead><tbody>${products.map(p => `<tr><td><img src="${p.imageData}" style="width:40px; height:50px; object-fit:cover;"></td><td>${p.name}</td><td>${p.type}</td><td>R ${p.price}</td><td><input type="number" value="${p.stock}" id="stock-${p.id}" style="width:60px;" onchange="updateStock(${p.id}, this.value)"></td><td>${(p.colors || defaultColors).slice(0,2).join(', ')}</td><td>${(p.sizes || defaultSizes).slice(0,3).join(', ')}</td><td><button class="action-btn btn-edit" onclick="editProduct(${p.id})">Edit</button><button class="action-btn btn-delete" onclick="deleteProduct(${p.id})">Delete</button></td></tr>`).join('')}</tbody></table>`;
-    }
-  }
+  function viewProof(imageData) { const win = window.open(); win.document.write(`<img src="${imageData}" style="max-width:100%;">`); }
+  function renderFullOrders() { let filtered = orderFilter === 'all' ? orders : orders.filter(o => (o.status || 'pending') === orderFilter); document.getElementById('fullOrdersList') && (document.getElementById('fullOrdersList').innerHTML = renderOrdersTable(filtered)); }
+  function renderProductsManage() { const container = document.getElementById('productsManageList'); if(container) { container.innerHTML = `<table class="products-table"><thead><tr><th>Image</th><th>Name</th><th>Type</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead><tbody>${products.map(p => `<tr><td><div style="display:flex; gap:5px;"><img src="${p.frontImage}" style="width:40px; height:50px; object-fit:cover;"><img src="${p.backImage}" style="width:40px; height:50px; object-fit:cover;"></div></td><td>${p.name}</td><td>${p.type}</td><td>R ${p.price}</td><td><input type="number" value="${p.stock}" id="stock-${p.id}" style="width:60px;" onchange="updateStock(${p.id}, this.value)"></td><td><button class="action-btn btn-edit" onclick="editProduct(${p.id})">Edit</button><button class="action-btn btn-delete" onclick="deleteProduct(${p.id})">Delete</button></td></tr>`).join('')}</tbody></table>`; } }
   
   function updateStock(id, value) { const p = products.find(p => p.id === id); if(p) { p.stock = parseInt(value); saveProducts(); renderAllProducts(); renderAdminDashboard(); } }
   function updateOrderStatus(id, status) { const order = orders.find(o => o.id === id); if(order) { order.status = status; saveOrders(); renderAdminDashboard(); alert(`Order #${order.orderRef} marked as ${status}`); } }
   function viewOrder(id) { const order = orders.find(o => o.id === id); alert(`Order Details:\nRef: ${order.orderRef}\nCustomer: ${order.name}\nEmail: ${order.email}\nWhatsApp: ${order.whatsapp}\nItems: ${order.items.map(i => `${i.name} (${i.color}, ${i.size}) x${i.quantity}`).join(', ')}\nTotal: R${order.total}\nStatus: ${order.status}`); }
   function filterOrders(status) { orderFilter = status; renderFullOrders(); }
-  
-  function previewImage(input) { if(input.files && input.files[0]) { let reader = new FileReader(); reader.onload = e => { currentImageData = e.target.result; document.getElementById('imagePreview').src = currentImageData; document.getElementById('imagePreview').style.display = 'block'; document.getElementById('prodImageData').value = currentImageData; }; reader.readAsDataURL(input.files[0]); } }
-  
-  function addProductWithImage() {
-    let name = document.getElementById('prodName').value, price = parseInt(document.getElementById('prodPrice').value), stock = parseInt(document.getElementById('prodStock').value), type = document.getElementById('prodType').value, image = document.getElementById('prodImageData').value;
-    let colors = document.getElementById('prodColors').value.split(',').map(c => c.trim()).filter(c => c);
-    let sizes = document.getElementById('prodSizes').value.split(',').map(s => s.trim()).filter(s => s);
-    if(!name || !price || !image) { alert('Fill all fields and upload image'); return; }
-    products.push({ id: Date.now(), name, price, stock: stock || 10, imageData: image, type, colors: colors.length ? colors : defaultColors, sizes: sizes.length ? sizes : defaultSizes });
-    saveProducts(); renderAllProducts(); renderAdminDashboard();
-    document.getElementById('prodName').value = ''; document.getElementById('prodPrice').value = ''; document.getElementById('prodImageData').value = ''; document.getElementById('imagePreview').style.display = 'none'; document.getElementById('imageUpload').value = ''; document.getElementById('prodColors').value = ''; document.getElementById('prodSizes').value = '';
-    alert('Product added!');
-  }
-  
-  function editProduct(id) { let p = products.find(p=>p.id===id); let n=prompt('Name:',p.name); let pr=prompt('Price:',p.price); let t=prompt('Type:',p.type); if(n) p.name=n; if(pr) p.price=parseInt(pr); if(t) p.type=t; saveProducts(); renderAllProducts(); renderAdminDashboard(); }
+  function editProduct(id) { let p = products.find(p=>p.id===id); let n=prompt('Name:',p.name); let pr=prompt('Price:',p.price); if(n) p.name=n; if(pr) p.price=parseInt(pr); saveProducts(); renderAllProducts(); renderAdminDashboard(); }
   function deleteProduct(id) { if(confirm('Delete?')) { products=products.filter(p=>p.id!==id); saveProducts(); renderAllProducts(); renderAdminDashboard(); } }
-  
   function filterByCategory(cat) { currentFilter = cat; document.querySelectorAll('.filter-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.category===cat)); renderAllProducts(); scrollToSection('shop'); }
   function scrollToSection(id) { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
   function closeModal(id) { document.getElementById(id).style.display = 'none'; }
@@ -411,7 +461,6 @@
   function exportOrders() { let csv = "Order ID,Customer,Email,WhatsApp,Items,Total,Status,Date\n" + orders.map(o => `${o.orderRef},${o.name},${o.email},${o.whatsapp},"${o.items.map(i=>`${i.name}(${i.color},${i.size})`).join(';')}",${o.total},${o.status},${o.date}`).join('\n'); downloadFile(csv, 'kivaro_orders.csv', 'text/csv'); }
   function downloadFile(content, filename, type) { const blob = new Blob([content], { type }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = filename; link.click(); URL.revokeObjectURL(link.href); }
   function subscribeNewsletter() { let email = document.getElementById('newsEmail').value; if(email && email.includes('@')) { alert(`Thanks for subscribing!`); document.getElementById('newsEmail').value = ''; } else alert('Enter valid email'); }
-  
   function showAdminLogin() { document.getElementById('loginModal').style.display = 'flex'; }
   function adminLogin() { let p = document.getElementById('adminPassword').value; if(p === ADMIN_KEY) { closeModal('loginModal'); document.getElementById('adminModal').style.display='flex'; renderAdminDashboard(); document.getElementById('adminWhatsApp').value = adminWhatsApp; document.getElementById('bankName').value = bankDetails.name; document.getElementById('accountNumber').value = bankDetails.account; document.getElementById('accountName').value = bankDetails.accountName; } else alert('Invalid admin key'); }
   
